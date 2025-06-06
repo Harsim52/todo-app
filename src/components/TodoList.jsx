@@ -3,15 +3,19 @@ import { TodoItem } from "./TodoItem";
 
 const TodoList = ({ task, deleteTask, toggleComplete }) => {
   return (
-    <div>
-      {task.map((task) => (
-        <TodoItem
-          key={task.id}
-          task={task}
-          deleteTask={() => deleteTask(task.id)}
-          toggleComplete={() => toggleComplete(task.id)}
-        ></TodoItem>
-      ))}
+    <div className="mt-6">
+      {task.length === 0 ? (
+        <p className="text-gray-500 text-center">No tasks yet!</p>
+      ) : (
+        task.map((item) => (
+          <TodoItem
+            key={item.id}
+            task={item}
+            deleteTask={() => deleteTask(item.id)}
+            toggleComplete={() => toggleComplete(item.id)}
+          />
+        ))
+      )}
     </div>
   );
 };
